@@ -1,0 +1,6 @@
+{
+  "name": "ILMI Trust & Jamia Darul Ilmi",
+  "description": "Official institutional portal of ILMI Trust (Islamic Literacy Movement of India) and Jamia Darul Ilmi – dedicated to Islamic education, civil service empowerment, and community welfare.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

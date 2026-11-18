@@ -1,0 +1,477 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-arabic: 'Amiri', serif;
+
+  --color-charcoal-deep: #29231B;
+  --color-gold-antique: #B08A3C;
+  --color-gold-champagne: #D8C18A;
+  --color-ivory-warm: #F7F3EA;
+  --color-charcoal-warm: #51483C;
+  --color-olive-islamic: #48634A;
+
+  --breakpoint-xs: 400px;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #F7F3EA;
+  color: #29231B;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: rgba(176, 138, 60, 0.25);
+  color: #29231B;
+}
+
+/* Subtle Islamic geometric pattern background utility */
+.bg-islamic-pattern {
+  background-color: #F7F3EA;
+  background-image: radial-gradient(#B08A3C 0.6px, transparent 0.6px), radial-gradient(#B08A3C 0.6px, #F7F3EA 0.6px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  background-opacity: 0.05;
+}
+
+.bg-dark-pattern {
+  background-color: #29231B;
+  background-image: radial-gradient(#B08A3C 0.5px, transparent 0.5px), radial-gradient(#B08A3C 0.5px, #29231B 0.5px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+
+/* Premium Cinematic Hero Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroWordReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-anim-kicker {
+  opacity: 0;
+  animation: heroFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.05s;
+}
+
+.hero-anim-subtitle {
+  opacity: 0;
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.65s;
+}
+
+.hero-anim-description {
+  opacity: 0;
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.95s;
+}
+
+.hero-anim-btn-1 {
+  opacity: 0;
+  animation: heroFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 1.25s;
+}
+
+.hero-anim-btn-2 {
+  opacity: 0;
+  animation: heroFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 1.40s;
+}
+
+/* =========================================================================
+   Uiverse.io by SelfMadeSystem – SVG Animated Outline Navigation Hover Effect
+   Adapted for ILMI Trust Brand Identity (Antique Gold #B08A3C & Champagne Gold #D8C18A)
+   ========================================================================= */
+
+.nav-outline-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.95rem;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.nav-outline-btn:hover {
+  background-color: #F7F3EA;
+  color: #29231B;
+}
+
+.nav-outline-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nav-outline-rect {
+  x: 1;
+  y: 1;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  rx: 3px;
+  fill: none;
+  stroke: #B08A3C;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  stroke-dashoffset: 5;
+  stroke-dasharray: 0 0 10 40 10 40;
+  opacity: 0;
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              stroke-dasharray 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.25s ease;
+}
+
+.nav-outline-btn:hover .nav-outline-rect {
+  opacity: 1;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 50 0 50 0 0 0;
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              stroke-dasharray 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.15s ease;
+}
+
+.nav-active-indicator {
+  position: absolute;
+  bottom: 2px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background-color: #D8C18A;
+  border-radius: 9999px;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(216, 193, 138, 0.3);
+}
+
+/* =========================================================================
+   Uiverse.io by bhaveshxrawat – Animated Rotating Gradient Border Effect
+   Adapted for ILMI Trust Brand Identity (Our Key Initiatives cards)
+   ========================================================================= */
+
+@keyframes rotBGimg {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.initiative-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 4px;
+  background: transparent;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.initiative-card-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -6px rgba(176, 138, 60, 0.28), 0 4px 10px -2px rgba(41, 35, 27, 0.08);
+}
+
+.initiative-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220%;
+  height: 220%;
+  background: conic-gradient(
+    from 0deg,
+    #B08A3C 0deg,
+    #D8C18A 60deg,
+    #F7F3EA 120deg,
+    #B08A3C 180deg,
+    #29231B 240deg,
+    #D8C18A 300deg,
+    #B08A3C 360deg
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: rotBGimg 4s linear infinite;
+  transition: animation-duration 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.initiative-card-wrapper:hover::before {
+  animation-duration: 2.5s;
+}
+
+.initiative-card-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background-color: #F7F3EA;
+  border-radius: 2px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.initiative-card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* =========================================================================
+   Uiverse.io by doniaskima – Button 17 Animated Button Effect
+   Adapted for ILMI Trust Brand Identity (Antique Gold #B08A3C & Charcoal #29231B)
+   ========================================================================= */
+
+@keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(90%);
+  }
+  51% {
+    transform: translateY(-90%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.btn-17,
+.btn-17 *,
+.btn-17:after,
+.btn-17:before {
+  box-sizing: border-box;
+}
+
+.btn-17 {
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 99rem;
+  border-width: 2px;
+  border-style: solid;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1.75rem;
+  z-index: 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+@media (max-width: 639px) {
+  .btn-17 {
+    padding: 0.55rem 1.15rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+.btn-17:active {
+  transform: translateY(1px);
+}
+
+.btn-17:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-17 .text-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.btn-17 .text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.btn-17:hover .text {
+  animation: move-up-alternate 0.32s forwards;
+}
+
+/* Sliding background wedges (::before and ::after) */
+.btn-17:after,
+.btn-17:before {
+  --skew: 0.2;
+  content: "";
+  display: block;
+  height: 110%;
+  left: calc(-50% - 50% * var(--skew));
+  pointer-events: none;
+  position: absolute;
+  top: -106%;
+  transform: skew(calc(150deg * var(--skew))) translateY(var(--progress, 0));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  z-index: 1;
+}
+
+.btn-17:after {
+  --progress: 0%;
+  left: calc(50% + 50% * var(--skew));
+  top: 104%;
+  z-index: 1;
+}
+
+.btn-17:hover:before {
+  --progress: 100%;
+}
+
+.btn-17:hover:after {
+  --progress: -102%;
+}
+
+/* Primary Button: Antique Gold (#B08A3C) -> Deep Charcoal (#29231B) on hover */
+.btn-17-primary {
+  background-color: #B08A3C;
+  border-color: #B08A3C;
+  color: #29231B;
+}
+
+.btn-17-primary:before,
+.btn-17-primary:after {
+  background-color: #29231B;
+}
+
+.btn-17-primary:hover {
+  border-color: #29231B;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(41, 35, 27, 0.25);
+}
+
+.btn-17-primary:hover .text {
+  color: #FFFFFF;
+}
+
+.btn-17-primary:hover svg {
+  color: #FFFFFF;
+}
+
+/* Header CTA Button: Subtle darker gold hover state */
+.btn-header-cta:before,
+.btn-header-cta:after {
+  background-color: #8C6D2B !important;
+}
+
+.btn-header-cta:hover {
+  border-color: #8C6D2B !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(140, 109, 43, 0.35) !important;
+}
+
+/* Secondary Button: Transparent -> Antique Gold (#B08A3C) on hover */
+.btn-17-secondary {
+  background-color: transparent;
+  border-color: #B08A3C;
+  color: #29231B;
+}
+
+.btn-17-secondary:before,
+.btn-17-secondary:after {
+  background-color: #B08A3C;
+}
+
+.btn-17-secondary:hover {
+  border-color: #B08A3C;
+  color: #29231B;
+  box-shadow: 0 4px 14px rgba(176, 138, 60, 0.25);
+}
+
+.btn-17-secondary:hover .text {
+  color: #29231B;
+}
+
+/* Secondary on dark surfaces: Transparent border #B08A3C, text #F7F3EA -> Antique Gold on hover */
+.btn-17-secondary-dark {
+  background-color: transparent;
+  border-color: #B08A3C;
+  color: #F7F3EA;
+}
+
+.btn-17-secondary-dark:before,
+.btn-17-secondary-dark:after {
+  background-color: #B08A3C;
+}
+
+.btn-17-secondary-dark:hover {
+  border-color: #B08A3C;
+  color: #29231B;
+  box-shadow: 0 4px 14px rgba(176, 138, 60, 0.35);
+}
+
+.btn-17-secondary-dark:hover .text {
+  color: #29231B;
+}
+
+/* Direct children fallback */
+.btn-17 > *:not(.text-container) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .btn-17:hover .text {
+    animation: none;
+  }
+  .btn-17:after,
+  .btn-17:before {
+    transition: none;
+  }
+}
+
+
